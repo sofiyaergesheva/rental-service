@@ -7,11 +7,16 @@ import errorMiddleware from './middleware/ErrorHandlingMiddleware.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
-dotenv.config();
+const env = process.env.NODE_ENV || 'development';
+if (env !== 'production') {
+  dotenv.config();
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 5000;
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use('/static', express.static(path.resolve(__dirname, 'static')));
