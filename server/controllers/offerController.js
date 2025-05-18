@@ -1,5 +1,6 @@
-import { adaptOfferToClient } from '../adapters/offerAdapter.js';
+import { adaptOfferToClient, adaptFullOfferToClient } from '../adapters/offerAdapter.js';
 import { Offer } from '../models/offer.js'
+import { User } from '../models/user.js';
 
 async function getAllOffers(req, res, next) {
     try {
@@ -8,6 +9,29 @@ async function getAllOffers(req, res, next) {
         res.status(200).json(adaptedOffers);
     } catch (error) {
         console.error('Не удалось получить список предложений: ', error);
+    }
+}
+
+async function getFullOffer(req, res, next) {
+    try {
+        const { id } = req.params;
+
+        const offer = await Offer.findByPk(id, {
+            include: {
+                model: User,
+                as: 'author'
+            }
+        });
+
+        if (!offer) {
+            return next(ApiError.badRequest('Offer not found'));
+        }
+
+        const adaptedOffer = adaptFullOfferToClient(offer, offer.author);
+        res.status(200).json(adaptedOffer);
+    } catch (error) {
+        console.error('Ошибка при получении полного оффера: ', error);
+        next(ApiError.internal('Ошибка при получении полного оффера'));
     }
 }
 
@@ -73,4 +97,4 @@ export async function createOffer(req, res, next) {
 }
 
 
-export { getAllOffers }
+export { getAllOffers, getFullOffer }

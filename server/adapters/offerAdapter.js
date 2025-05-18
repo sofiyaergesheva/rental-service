@@ -7,6 +7,7 @@ const cityCoordinates = {
     Dusseldorf: { latitude: 51.2277, longitude: 6.7735, zoom: 13 }
 };
 const getBaseUrl = () => `${process.env.HOST}:${process.env.PORT || 5000}`;
+
 const adaptOfferToClient = (offer) => {
     const baseUrl = getBaseUrl();
     const cityLocation = cityCoordinates[offer.city];
@@ -34,5 +35,48 @@ const adaptOfferToClient = (offer) => {
     };
 };
 
+const adaptFullOfferToClient = (offer, author) => {
+    const baseUrl = getBaseUrl();
 
-export { adaptOfferToClient };
+    const previewImage = offer.previewImage.startsWith('http')
+        ? offer.previewImage
+        : `${baseUrl}${offer.previewImage.startsWith('/') ? '' : '/'}${offer.previewImage}`;
+
+    const photos = offer.photos.map(photo =>
+        photo.startsWith('http') ? photo : `${baseUrl}${photo.startsWith('/') ? '' : '/'}${photo}`
+    );
+
+    return {
+        id: String(offer.id),
+        title: offer.title,
+        description: offer.description,
+        date: offer.publishDate,
+        city: {
+            name: offer.city,
+            location: cityCoordinates[offer.city] || {}
+        },
+        location: {
+            latitude: offer.latitude,
+            longitude: offer.longitude
+        },
+        previewImage,
+        photos,
+        isPremium: offer.isPremium,
+        isFavorite: offer.isFavorite,
+        rating: parseFloat(offer.rating),
+        type: offer.type,
+        bedrooms: offer.rooms,
+        maxAdults: offer.guests,
+        price: offer.price,
+        goods: offer.features,
+        host: {
+            name: author?.username || '',
+            avatarUrl: author?.avatar && !author.avatar.startsWith('http')
+                ? `${baseUrl}${author.avatar.startsWith('/') ? '' : '/'}${author.avatar}`
+                : author?.avatar,
+            isPro: author?.userType === 'pro'
+        }
+    };
+};
+
+export { adaptOfferToClient, adaptFullOfferToClient };
