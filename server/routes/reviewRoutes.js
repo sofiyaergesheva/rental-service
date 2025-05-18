@@ -4,7 +4,7 @@ import { authenticateToken } from '../middleware/authMiddleware.js';
 
 const router = new Router();
 
-router.post('/:offerId', addReview);
+router.post('/:offerId', authenticateToken, addReview);
 router.get('/:offerId', authenticateToken, getReviewsByOfferId);
 
 export default router;

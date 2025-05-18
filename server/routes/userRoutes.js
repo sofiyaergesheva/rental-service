@@ -1,7 +1,8 @@
 import { Router } from "express";
 import upload from "../middleware/upload.js";
 import { registration, login, logout } from "../controllers/userController.js";
-import { authenticateToken, checkAuth } from "../middleware/authMiddleware.js";
+import { authenticateToken } from "../middleware/authMiddleware.js";
+import { checkAuth } from "../controllers/userController.js";
 
 const router = new Router();
 

@@ -46,17 +46,13 @@ export const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
 
-
         const user = await User.findOne({ where: { email } });
         if (!user) return next(ApiError.badRequest('Пользователь не найден'));
-
 
         const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) return next(ApiError.badRequest('Неверный пароль'));
 
-
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' });
-
 
         res.json({ token });
     } catch (error) {
