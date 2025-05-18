@@ -7,8 +7,7 @@ const addReview = async (req, res, next) => {
     try {
         const { comment, rating } = req.body;
         const offerId = req.params.offerId;
-        // const userId = req.user.id;
-        const userId = 1;
+        const userId = req.user.id;
 
 
         if (!comment || !rating || !offerId) {

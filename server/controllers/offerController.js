@@ -48,15 +48,12 @@ export async function createOffer(req, res, next) {
             return next(ApiError.badRequest('Превью изображение обязательно для загрузки'));
         }
 
-
         const previewImagePath = `/static/${req.files.previewImage[0].filename}`;
-
 
         let processedPhotos = [];
         if (req.files?.photos) {
             processedPhotos = req.files.photos.map(file => `/static/${file.filename}`);
         }
-
 
         let parsedFeatures = [];
         if (features) {
@@ -66,7 +63,6 @@ export async function createOffer(req, res, next) {
                 parsedFeatures = features.split(',');
             }
         }
-
 
         const offer = await Offer.create({
             title,
@@ -89,12 +85,42 @@ export async function createOffer(req, res, next) {
             authorId: userId
         });
 
-
         return res.status(201).json(offer);
     } catch (error) {
         next(ApiError.internal('Не удалось добавить предложение: ' + error.message));
     }
 }
 
+const toggleFavorite = async (req, res, next) => {
+    try {
+        const { offerId, status } = req.params;
 
-export { getAllOffers, getFullOffer }
+        const offer = await Offer.findByPk(offerId);
+        if (!offer) {
+            return next(ApiError.notFound('Предложение не найдено'));
+        }
+
+        offer.isFavorite = status === '1';
+        await offer.save();
+
+        res.json(offer);
+    } catch (error) {
+        next(ApiError.internal('Ошибка при обновлении статуса избранного'));
+    }
+};
+
+const getFavoriteOffers = async (req, res, next) => {
+    try {
+        const favoriteOffers = await Offer.findAll({
+            where: { isFavorite: true }
+        });
+
+        const adapted = favoriteOffers.map(adaptOfferToClient);
+        res.json(adapted);
+    } catch (error) {
+        console.error(error);
+        next(ApiError.internal('Не удалось получить избранные предложения'));
+    }
+};
+
+export { getAllOffers, getFullOffer, getFavoriteOffers, toggleFavorite }
