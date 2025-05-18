@@ -9,7 +9,7 @@ import path from 'path';
 
 const env = process.env.NODE_ENV || 'development';
 if (env !== 'production') {
-  dotenv.config();
+    dotenv.config();
 }
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,6 +20,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/static', express.static(path.resolve(__dirname, 'static')));
+
+// Заглушка
+app.get('/', (req, res) => {
+    res.send('Добро пожаловать на сервер!');
+});
+
 app.use('/', router);
 app.use(errorMiddleware);
 
