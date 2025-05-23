@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { CitiesCard } from "../../components/cities-card/cities-card";
+import { CitiesCardList } from "../../components/cities-card-list/CitiesCardList";
+
 function MainPage() {
     return (
         <div className="page page--gray page--main">
@@ -91,11 +92,7 @@ function MainPage() {
                                 </ul>
                             </form>
                             <div className="cities__places-list places__list tabs__content">
-                                <CitiesCard />
-                                <CitiesCard />
-                                <CitiesCard />
-                                <CitiesCard />
-                                <CitiesCard />
+                                <CitiesCardList />
                             </div>
                         </section>
                         <div className="cities__right-section">
