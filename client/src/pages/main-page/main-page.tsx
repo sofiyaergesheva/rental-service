@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import { CitiesCardList } from "../../components/cities-card-list/CitiesCardList";
+import { OffersList } from "../../types/offer";
 
-function MainPage() {
+type MainPageProps = {
+    rentalOffersCount: number;
+    offersList: OffersList[];
+}
+
+function MainPage({ rentalOffersCount, offersList }: MainPageProps) {
     return (
         <div className="page page--gray page--main">
+            <Helmet>
+                <title>Шесть городов</title>
+            </Helmet>
             <header className="header">
                 <div className="container">
                     <div className="header__wrapper">
@@ -92,7 +101,7 @@ function MainPage() {
                                 </ul>
                             </form>
                             <div className="cities__places-list places__list tabs__content">
-                                <CitiesCardList />
+                                <CitiesCardList offersList={offersList} />
                             </div>
                         </section>
                         <div className="cities__right-section">
