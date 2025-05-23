@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CitiesCard } from "../../components/cities-card/cities-card";
 function MainPage() {
     return (
@@ -6,9 +7,9 @@ function MainPage() {
                 <div className="container">
                     <div className="header__wrapper">
                         <div className="header__left">
-                            <a className="header__logo-link header__logo-link--active">
-                                <img className="header__logo" src="img/logo.svg" alt="Rent service logo" width="81" height="41"/>
-                            </a>
+                            <Link className="header__logo-link header__logo-link--active" to="/">
+                                <img className="header__logo" src="img/logo.svg" alt="Rent service logo" width="81" height="41" />
+                            </Link>
                         </div>
                         <nav className="header__nav">
                             <ul className="header__nav-list">
@@ -90,11 +91,11 @@ function MainPage() {
                                 </ul>
                             </form>
                             <div className="cities__places-list places__list tabs__content">
-                            <CitiesCard/>
-                            <CitiesCard/>
-                            <CitiesCard/>
-                            <CitiesCard/>
-                            <CitiesCard/>
+                                <CitiesCard />
+                                <CitiesCard />
+                                <CitiesCard />
+                                <CitiesCard />
+                                <CitiesCard />
                             </div>
                         </section>
                         <div className="cities__right-section">

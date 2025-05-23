@@ -1,4 +1,5 @@
-// import { CitiesCard } from "../../components/cities-card/cities-card";
+import { Link } from "react-router-dom";
+
 function Offer() {
     return (
         <div className="page">
@@ -6,9 +7,9 @@ function Offer() {
                 <div className="container">
                     <div className="header__wrapper">
                         <div className="header__left">
-                            <a className="header__logo-link" href="main.html">
+                            <Link className="header__logo-link" to="/offer/:id">
                                 <img className="header__logo" src="img/logo.svg" alt="Rent service logo" width="81" height="41" />
-                            </a>
+                            </Link>
                         </div>
                         <nav className="header__nav">
                             <ul className="header__nav-list">
@@ -73,7 +74,7 @@ function Offer() {
                             </div>
                             <div className="offer__rating rating">
                                 <div className="offer__stars rating__stars">
-                                    <span style={{width: "80%"}}></span>
+                                    <span style={{ width: "80%" }}></span>
                                     <span className="visually-hidden">Rating</span>
                                 </div>
                                 <span className="offer__rating-value rating__value">4.8</span>
@@ -169,7 +170,7 @@ function Offer() {
                                         <div className="reviews__info">
                                             <div className="reviews__rating rating">
                                                 <div className="reviews__stars rating__stars">
-                                                    <span style={{width: "80%"}}></span>
+                                                    <span style={{ width: "80%" }}></span>
                                                     <span className="visually-hidden">Rating</span>
                                                 </div>
                                             </div>
@@ -259,7 +260,7 @@ function Offer() {
                                     </div>
                                     <div className="place-card__rating rating">
                                         <div className="place-card__stars rating__stars">
-                                            <span style={{width: "80%"}}></span>
+                                            <span style={{ width: "80%" }}></span>
                                             <span className="visually-hidden">Rating</span>
                                         </div>
                                     </div>
@@ -291,7 +292,7 @@ function Offer() {
                                     </div>
                                     <div className="place-card__rating rating">
                                         <div className="place-card__stars rating__stars">
-                                            <span style={{width: "80%"}}></span>
+                                            <span style={{ width: "80%" }}></span>
                                             <span className="visually-hidden">Rating</span>
                                         </div>
                                     </div>
@@ -326,7 +327,7 @@ function Offer() {
                                     </div>
                                     <div className="place-card__rating rating">
                                         <div className="place-card__stars rating__stars">
-                                            <span style={{width: "100%"}}></span>
+                                            <span style={{ width: "100%" }}></span>
                                             <span className="visually-hidden">Rating</span>
                                         </div>
                                     </div>
