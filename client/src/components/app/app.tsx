@@ -5,6 +5,8 @@ import { Offer } from "../../pages/offer/offer";
 import { NotFound } from "../../pages/not-found/not-found";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { JSX } from "react";
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { PrivateRoute } from "../private-route/private-route";
 
 function App({ rentalOffersCount }: AppMainPageProps): JSX.Element {
     return (
@@ -12,7 +14,8 @@ function App({ rentalOffersCount }: AppMainPageProps): JSX.Element {
             <Routes>
                 <Route path={AppRoute.Main} element={<MainPage rentalOffersCount={rentalOffersCount} />} />
                 <Route path={AppRoute.Login} element={<Login />} />
-                <Route path={AppRoute.Favorites} element={<Favorites />} />
+                <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                    <Favorites /></PrivateRoute>} />
                 <Route path={AppRoute.Offer} element={<Offer />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
