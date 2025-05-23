@@ -130,3 +130,5 @@ const offers: FullOffer[] = [
         maxAdults: 6,
     }
 ];
+
+export { offers };

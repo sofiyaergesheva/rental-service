@@ -7,8 +7,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { JSX } from "react";
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from "../private-route/private-route";
+import { FullOffer } from "../../types/offer";
 
-function App({ rentalOffersCount }: AppMainPageProps): JSX.Element {
+type AppMainPageProps = {
+    rentalOffersCount: number;
+    offers: FullOffer[];
+}
+
+function App({ rentalOffersCount, offers }: AppMainPageProps): JSX.Element {
     return (
         <BrowserRouter>
             <Routes>
