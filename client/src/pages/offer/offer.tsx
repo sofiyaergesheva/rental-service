@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { FullOffer } from "../../types/offer";
 
-function Offer() {
+type OfferProps = {
+    offers: FullOffer[];
+};
+
+function Offer({ offers }: OfferProps) {
     return (
         <div className="page">
             <header className="header">
@@ -58,12 +63,13 @@ function Offer() {
                     </div>
                     <div className="offer__container container">
                         <div className="offer__wrapper">
-                            <div className="offer__mark">
-                                <span>Premium</span>
-                            </div>
+                            {offer.isPremium ? (
+                                <div className="offer__mark">
+                                    <span>Premium</span>
+                                </div>) : null}
                             <div className="offer__name-wrapper">
                                 <h1 className="offer__name">
-                                    Beautiful &amp; luxurious studio at great location
+                                    {offer.title}
                                 </h1>
                                 <button className="offer__bookmark-button button" type="button">
                                     <svg className="offer__bookmark-icon" width="31" height="33">
@@ -77,56 +83,31 @@ function Offer() {
                                     <span style={{ width: "80%" }}></span>
                                     <span className="visually-hidden">Rating</span>
                                 </div>
-                                <span className="offer__rating-value rating__value">4.8</span>
+                                <span className="offer__rating-value rating__value">{offer.rating}</span>
                             </div>
                             <ul className="offer__features">
                                 <li className="offer__feature offer__feature--entire">
-                                    Apartment
+                                    {offer.type}
                                 </li>
                                 <li className="offer__feature offer__feature--bedrooms">
-                                    3 Bedrooms
+                                    {offer.bedrooms} Bedrooms
                                 </li>
                                 <li className="offer__feature offer__feature--adults">
-                                    Max 4 adults
+                                    Max {offer.maxAdults} adults
                                 </li>
                             </ul>
                             <div className="offer__price">
-                                <b className="offer__price-value">&euro;120</b>
+                                <b className="offer__price-value">&euro;{offer.price}</b>
                                 <span className="offer__price-text">&nbsp;night</span>
                             </div>
                             <div className="offer__inside">
                                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                                 <ul className="offer__inside-list">
-                                    <li className="offer__inside-item">
-                                        Wi-Fi
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Washing machine
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Towels
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Heating
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Coffee machine
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Baby seat
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Kitchen
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Dishwasher
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Cabel TV
-                                    </li>
-                                    <li className="offer__inside-item">
-                                        Fridge
-                                    </li>
+                                    {offer.goods.map((item) => (
+                                        <li className="offer__inside-item" key={item}>
+                                            {item}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                             <div className="offer__host">
@@ -248,7 +229,7 @@ function Offer() {
                                 <div className="place-card__info">
                                     <div className="place-card__price-wrapper">
                                         <div className="place-card__price">
-                                            <b className="place-card__price-value">&euro;80</b>
+                                            <b className="place-card__price-value">&euro;{offer.price}</b>
                                             <span className="place-card__price-text">&#47;&nbsp;night</span>
                                         </div>
                                         <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
@@ -267,7 +248,7 @@ function Offer() {
                                     <h2 className="place-card__name">
                                         <a href="#">Wood and stone place</a>
                                     </h2>
-                                    <p className="place-card__type">Private room</p>
+                                    <p className="place-card__type">{offer.type}</p>
                                 </div>
                             </article>
 
@@ -280,7 +261,7 @@ function Offer() {
                                 <div className="place-card__info">
                                     <div className="place-card__price-wrapper">
                                         <div className="place-card__price">
-                                            <b className="place-card__price-value">&euro;132</b>
+                                            <b className="place-card__price-value">&euro;{offer.price}</b>
                                             <span className="place-card__price-text">&#47;&nbsp;night</span>
                                         </div>
                                         <button className="place-card__bookmark-button button" type="button">
@@ -299,14 +280,15 @@ function Offer() {
                                     <h2 className="place-card__name">
                                         <a href="#">Canal View Prinsengracht</a>
                                     </h2>
-                                    <p className="place-card__type">Apartment</p>
+                                    <p className="place-card__type">{offer.type}</p>
                                 </div>
                             </article>
 
                             <article className="near-places__card place-card">
-                                <div className="place-card__mark">
-                                    <span>Premium</span>
-                                </div>
+                                {offer.isPremium ? (
+                                    <div className="place-card__mark">
+                                        <span>Premium</span>
+                                    </div>) : null}
                                 <div className="near-places__image-wrapper place-card__image-wrapper">
                                     <a href="#">
                                         <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image" />
@@ -315,7 +297,7 @@ function Offer() {
                                 <div className="place-card__info">
                                     <div className="place-card__price-wrapper">
                                         <div className="place-card__price">
-                                            <b className="place-card__price-value">&euro;180</b>
+                                            <b className="place-card__price-value">&euro;{offer.price}</b>
                                             <span className="place-card__price-text">&#47;&nbsp;night</span>
                                         </div>
                                         <button className="place-card__bookmark-button button" type="button">
@@ -334,7 +316,7 @@ function Offer() {
                                     <h2 className="place-card__name">
                                         <a href="#">Nice, cozy, warm big bed apartment</a>
                                     </h2>
-                                    <p className="place-card__type">Apartment</p>
+                                    <p className="place-card__type">{offer.type}</p>
                                 </div>
                             </article>
                         </div>
