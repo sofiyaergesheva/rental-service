@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import { FullOffer } from "../../types/offer";
+import { useParams } from "react-router-dom";
+import { NotFound } from "../not-found/not-found";
 
 type OfferProps = {
     offers: FullOffer[];
 };
 
 function Offer({ offers }: OfferProps) {
+    const params = useParams();
+    const offer = offers.find((item) => item.id === params.id);
+    if (!offer) {
+        return <NotFound />;
+    }
     return (
         <div className="page">
             <header className="header">
