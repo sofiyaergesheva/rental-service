@@ -1,3 +1,7 @@
+const Setting = {
+    rentOffersCount: 312,
+}
+
 const AppRoute = {
     Main: '/',
     Login: '/login',
@@ -11,4 +15,6 @@ const AuthorizationStatus = {
     Unknown: 'UNKNOWN'
 }
 
-export { AppRoute, AuthorizationStatus };
+const STARS_COUNT = 5;
+
+export { Setting, AppRoute, AuthorizationStatus, STARS_COUNT };
