@@ -9,16 +9,16 @@ const offers: FullOffer[] = [
         price: 200,
         images: ['apartment1_1.jpg', 'apartment1_2.jpg', 'apartment1_3.jpg', 'apartment1_4.jpg', 'apartment1_5.jpg', 'apartment1_6.jpg',],
         city: {
-            name: 'Paris',
+            name: 'Amsterdam',
             location: {
-                latitude: 48.85661,
-                longitude: 2.351499,
+                latitude: 50.846557,
+                longitude: 4.895168,
                 zoom: 13
             }
         },
         location: {
-            latitude: 48.8566,
-            longitude: 2.3522,
+            latitude: 52.3909553943508,
+            longitude: 4.85309666406198,
             zoom: 16
         },
         goods: ['Breakfast', 'Laptop friendly workspace', 'Towels'],
@@ -41,16 +41,16 @@ const offers: FullOffer[] = [
         price: 180,
         images: ['apartment3_1.jpg', 'apartment3_2.jpg', 'apartment3_3.jpg', 'apartment3_4.jpg', 'apartment3_5.jpg', 'apartment3_6.jpg'],
         city: {
-            name: 'Cologne',
+            name: 'Amsterdam',
             location: {
-                latitude: 50.938361,
-                longitude: 6.959974,
+                latitude: 50.846557,
+                longitude: 4.895168,
                 zoom: 13
             }
         },
         location: {
-            latitude: 50.939,
-            longitude: 6.96,
+            latitude: 52.3609553943508,
+            longitude: 4.85309666406198,
             zoom: 16
         },
         goods: ['Breakfast', 'Air conditioning', 'Laptop friendly workspace', 'Baby seat'],
@@ -73,16 +73,16 @@ const offers: FullOffer[] = [
         price: 145,
         images: ['apartment6_1.jpg', 'apartment6_2.jpg', 'apartment6_3.jpg', 'apartment6_4.jpg', 'apartment6_5.jpg', 'apartment6_6.jpg'],
         city: {
-            name: 'Brussels',
+            name: 'Amsterdam',
             location: {
                 latitude: 50.846557,
-                longitude: 4.351697,
+                longitude: 4.895168,
                 zoom: 13
             }
         },
         location: {
-            latitude: 50.847,
-            longitude: 4.352,
+            latitude: 52.3909553943508,
+            longitude: 4.929309666406198,
             zoom: 16
         },
         goods: ['Baby seat', 'Washer'],
@@ -107,14 +107,14 @@ const offers: FullOffer[] = [
         city: {
             name: 'Amsterdam',
             location: {
-                latitude: 52.370216,
+                latitude: 50.846557,
                 longitude: 4.895168,
                 zoom: 13
             }
         },
         location: {
-            latitude: 52.371,
-            longitude: 4.896,
+            latitude: 52.3809553943508,
+            longitude: 4.939309666406198,
             zoom: 16
         },
         goods: ['Air conditioning', 'Baby seat', 'Washer', 'Fridge'],

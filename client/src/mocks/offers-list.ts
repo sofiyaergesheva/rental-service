@@ -8,16 +8,16 @@ export const offersList: OffersList[] = [
         'price': 200,
         'previewImage': 'img/apartment1_1.jpg',
         'city': {
-            'name': 'Paris',
+            'name': 'Amsterdam',
             'location': {
-                'latitude': 48.85661,
-                'longitude': 2.351499,
+                'latitude': 50.846557,
+                'longitude': 4.895168,
                 'zoom': 13
             }
         },
         'location': {
-            'latitude': 48.8566,
-            'longitude': 2.3522,
+            'latitude': 52.3909553943508, 
+            'longitude': 4.85309666406198,
             'zoom': 16
         },
         'isPremium': true,
@@ -31,16 +31,16 @@ export const offersList: OffersList[] = [
         'price': 180,
         'previewImage': 'img/apartment3_1.jpg',
         'city': {
-            'name': 'Cologne',
+            'name': 'Amsterdam',
             'location': {
-                'latitude': 50.938361,
-                'longitude': 6.959974,
+                'latitude': 50.846557,
+                'longitude': 4.895168,
                 'zoom': 13
             }
         },
         'location': {
-            'latitude': 50.939,
-            'longitude': 6.96,
+            'latitude': 52.3609553943508, 
+            'longitude': 4.85309666406198,
             'zoom': 16
         },
         'isPremium': true,
@@ -54,16 +54,16 @@ export const offersList: OffersList[] = [
         'price': 145,
         'previewImage': 'img/apartment6_1.jpg',
         'city': {
-            'name': 'Brussels',
+            'name': 'Amsterdam',
             'location': {
                 'latitude': 50.846557,
-                'longitude': 4.351697,
+                'longitude': 4.895168,
                 'zoom': 13
             }
         },
         'location': {
-            'latitude': 50.847,
-            'longitude': 4.352,
+            'latitude': 52.3909553943508, 
+            'longitude': 4.929309666406198,
             'zoom': 16
         },
         'isPremium': false,
@@ -85,8 +85,8 @@ export const offersList: OffersList[] = [
             }
         },
         'location': {
-            'latitude': 52.371,
-            'longitude': 4.896,
+            'latitude': 52.3809553943508, 
+            'longitude': 4.939309666406198,
             'zoom': 16
         },
         'isPremium': true,
