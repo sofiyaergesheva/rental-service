@@ -6,7 +6,7 @@ export const offersList: OffersList[] = [
         'title': 'Уютная квартира в центре Парижа',
         'type': 'apartment',
         'price': 200,
-        'previewImage': 'apartment1_1.jpg',
+        'previewImage': 'img/apartment1_1.jpg',
         'city': {
             'name': 'Paris',
             'location': {
@@ -29,7 +29,7 @@ export const offersList: OffersList[] = [
         'title': 'Современный дом рядом с Рейном',
         'type': 'house',
         'price': 180,
-        'previewImage': 'apartment3_1.jpg',
+        'previewImage': 'img/apartment3_1.jpg',
         'city': {
             'name': 'Cologne',
             'location': {
@@ -52,7 +52,7 @@ export const offersList: OffersList[] = [
         'title': 'Квартира в историческом здании',
         'type': 'apartment',
         'price': 145,
-        'previewImage': 'apartment6_1.jpg',
+        'previewImage': 'img/apartment6_1.jpg',
         'city': {
             'name': 'Brussels',
             'location': {
@@ -75,7 +75,7 @@ export const offersList: OffersList[] = [
         'title': 'Семейный дом в Амстердаме',
         'type': 'house',
         'price': 320,
-        'previewImage': 'apartment8_1.jpg',
+        'previewImage': 'img/apartment8_1.jpg',
         'city': {
             'name': 'Amsterdam',
             'location': {

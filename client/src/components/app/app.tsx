@@ -15,16 +15,16 @@ type AppMainPageProps = {
     offersList: OffersList[];
     offers: FullOffer[];
 }
-
+// TODO страница офферов не отображается (ошибка 404)
 function App({ rentalOffersCount, offers }: AppMainPageProps): JSX.Element {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path={AppRoute.Main} element={<MainPage rentalOffersCount={rentalOffersCount} offersList={offersList} />} />
                 <Route path={AppRoute.Login} element={<Login />} />
-                <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                    <Favorites /></PrivateRoute>} />
-                <Route path={`${AppRoute.Offer}/:id`} element={<Offer offers={offers} />} />
+                <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
+                    <Favorites offersList={offersList} /></PrivateRoute>} />
+                <Route path={`${AppRoute.Offer}/:id`} element={<Offer offers={offers} />} /> 
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
