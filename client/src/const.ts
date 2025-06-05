@@ -70,5 +70,19 @@ const CITIES_LOCATION: CityOffer[] = [
     },
 ];
 
+const SortOffersType = {
+    Popular: 'Popular',
+    PriceToHigh: 'Price: low to high',
+    PriceToLow: 'Price: high to low',
+    TopRated: 'TopRatedFirst'
+};
 
-export { Setting, AppRoute, AuthorizationStatus, STARS_COUNT, CITIES_LOCATION };
+const BlockName = {
+    AllPages: 'cities',
+    AllPagesList: 'cities__places-list',
+    Offer: 'offer',
+    NearOfferList: 'near-places__list',
+    NearOffer: 'near-places'
+} as const;
+
+export { Setting, AppRoute, AuthorizationStatus, STARS_COUNT, CITIES_LOCATION, SortOffersType, BlockName };
