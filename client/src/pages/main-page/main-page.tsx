@@ -3,13 +3,28 @@ import { CitiesCardList } from "../../components/cities-card-list/CitiesCardList
 import { OffersList } from "../../types/offer";
 import Map from "../../components/map/map";
 import React, { useState } from 'react';
+import { useAppSelector } from "../../hooks";
+import { useState } from "react";
+import { CitiesList } from "../../components/cities-list/citiesList";
+import { SortOffer } from "../../types/sort";
+import { SortOptions } from "../../components/sort-options/sort-options";
+import { sortOffersByType } from "../../utils";
+import { BlockName } from "../../const";
 
-type MainPageProps = {
-    rentalOffersCount: number;
-    offersList: OffersList[];
-}
+// TODO ошибки 
 
-function MainPage({ rentalOffersCount, offersList }: MainPageProps) {
+function MainPage() {
+    const selectedCity = useAppSelector((state) => state.city);
+    const offersList = useAppSelector((state) => state.offers);
+    const selectedCityOffers = getOffersByCity(selectedCity?.name, offersList);
+    const rentalOffersCount = selectedCityOffers.length;
+    const [selectedOffer, setSelectedOffer] = useState<OffersList | undefined>(undefined);
+    const handleListItemHover = (offerId: string) => {
+        const currentOffer = offersList.find((offer) => offer.id === offerId);
+        setSelectedOffer(currentOffer);
+    };
+    const [activeSort, setActiveSort] = useState<SortOffer>('Popular');
+
     const [selectedOffer, setSelectedOffer] = useState<OffersList | null>(null);
     const handleOfferHover = (id: string) => {
         const offer = offersList.find((o) => o.id === id) || null;
@@ -50,63 +65,17 @@ function MainPage({ rentalOffersCount, offersList }: MainPageProps) {
                 <h1 className="visually-hidden">Cities</h1>
                 <div className="tabs">
                     <section className="locations container">
-                        <ul className="locations__list tabs__list">
-                            <li className="locations__item">
-                                <a className="locations__item-link tabs__item" href="#">
-                                    <span>Paris</span>
-                                </a>
-                            </li>
-                            <li className="locations__item">
-                                <a className="locations__item-link tabs__item" href="#">
-                                    <span>Cologne</span>
-                                </a>
-                            </li>
-                            <li className="locations__item">
-                                <a className="locations__item-link tabs__item" href="#">
-                                    <span>Brussels</span>
-                                </a>
-                            </li>
-                            <li className="locations__item">
-                                <a className="locations__item-link tabs__item tabs__item--active">
-                                    <span>Amsterdam</span>
-                                </a>
-                            </li>
-                            <li className="locations__item">
-                                <a className="locations__item-link tabs__item" href="#">
-                                    <span>Hamburg</span>
-                                </a>
-                            </li>
-                            <li className="locations__item">
-                                <a className="locations__item-link tabs__item" href="#">
-                                    <span>Dusseldorf</span>
-                                </a>
-                            </li>
-                        </ul>
+                        <CitiesList selectedCity={selectedCity} />
                     </section>
                 </div>
                 <div className="cities">
                     <div className="cities__places-container container">
                         <section className="cities__places places">
                             <h2 className="visually-hidden">Places</h2>
-                            <b className="places__found">{rentalOffersCount} places to stay in Amsterdam</b>
-                            <form className="places__sorting" action="#" method="get">
-                                <span className="places__sorting-caption">Sort by</span>
-                                <span className="places__sorting-type" tabIndex={0}>
-                                    Popular
-                                    <svg className="places__sorting-arrow" width="7" height="4">
-                                        <use href="#icon-arrow-select"></use>
-                                    </svg>
-                                </span>
-                                <ul className="places__options places__options--custom places__options--opened">
-                                    <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                                    <li className="places__option" tabIndex={0}>Price: low to high</li>
-                                    <li className="places__option" tabIndex={0}>Price: high to low</li>
-                                    <li className="places__option" tabIndex={0}>Top rated first</li>
-                                </ul>
-                            </form>
-                            <div className="cities__places-list places__list tabs__content">
-                                <CitiesCardList offersList={offersList} />
-                            </div>
+                            <b className="places__found">{rentalOffersCount} places to stay in {selectedCity?.name}</b>
+                            <SortOptions activeSorting={activeSort} onChange={(newSorting) => setActiveSort(newSorting)} />
+                            <CitiesCardList block={BlockName.AllPages} offersList={sortOffersByType(selectedCityOffers, activeSort)}
+                                onListItemHover={handleListItemHover} />
                         </section>
                         <div className="cities__right-section">
                             <section className="cities__map map">
