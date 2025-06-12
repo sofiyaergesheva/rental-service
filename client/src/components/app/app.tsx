@@ -8,15 +8,14 @@ import { JSX } from "react";
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from "../private-route/private-route";
 import { FullOffer, OffersList } from "../../types/offer";
-import { offersList } from "../../mocks/offers-list";
 
 type AppMainPageProps = {
     rentalOffersCount: number;
     offersList: OffersList[];
     offers: FullOffer[];
 }
-// TODO страница офферов не отображается (ошибка 404)
-function App({ rentalOffersCount, offers }: AppMainPageProps): JSX.Element {
+
+function App({ rentalOffersCount, offersList, offers }: AppMainPageProps): JSX.Element {
     return (
         <BrowserRouter>
             <Routes>
@@ -24,7 +23,7 @@ function App({ rentalOffersCount, offers }: AppMainPageProps): JSX.Element {
                 <Route path={AppRoute.Login} element={<Login />} />
                 <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
                     <Favorites offersList={offersList} /></PrivateRoute>} />
-                <Route path={`${AppRoute.Offer}/:id`} element={<Offer offers={offers} />} /> 
+                <Route path={`${AppRoute.Offer}/:id`} element={<Offer offers={offers} offersList={offersList}/>} /> 
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

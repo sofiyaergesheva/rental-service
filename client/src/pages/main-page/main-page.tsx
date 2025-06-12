@@ -109,12 +109,14 @@ function MainPage({ rentalOffersCount, offersList }: MainPageProps) {
                             </div>
                         </section>
                         <div className="cities__right-section">
-                            <Map
-                                city={offersList[0].city}
-                                offers={offersList}
-                                selectedOffer={selectedOffer}
-                                onMarkerClick={handleOfferHover}
-                            />
+                            <section className="cities__map map">
+                                <Map
+                                    city={offersList[0].city}
+                                    offers={offersList}
+                                    selectedOffer={selectedOffer}
+                                    onMarkerClick={handleOfferHover}
+                                />
+                            </section>
                         </div>
                     </div>
                 </div>

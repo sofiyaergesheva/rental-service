@@ -5,7 +5,7 @@ import useMap from './useMap';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from './const';
 import { OffersList } from '../../types/offer';
 
-interface MapProps {
+type MapProps = {
   city: OffersList['city'];
   offers: OffersList[];
   selectedOffer: OffersList | null;
@@ -58,7 +58,7 @@ function Map({ city, offers, selectedOffer, onMarkerClick }: MapProps) {
     });
   }, [map, offers, selectedOffer, onMarkerClick, currentCustomIcon, defaultCustomIcon]);
 
-  return <div style={{ height: '500px', width: '100%' }} ref={mapRef}></div>;
+  return <div style={{ height: '500px'}} ref={mapRef}></div>;
 }
 
 export default Map;

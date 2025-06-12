@@ -7,11 +7,11 @@ const offers: FullOffer[] = [
         description: 'Светлая и современная квартира рядом с Лувром и Сенной. Отличный вариант для пары или небольшой семьи.',
         type: 'apartment',
         price: 200,
-        images: ['apartment1_1.jpg', 'apartment1_2.jpg', 'apartment1_3.jpg', 'apartment1_4.jpg', 'apartment1_5.jpg', 'apartment1_6.jpg',],
+        images: ['img/apartment1_1.jpg', 'img/apartment1_2.jpg', 'img/apartment1_3.jpg', 'img/apartment1_4.jpg', 'img/apartment1_5.jpg', 'img/apartment1_6.jpg',],
         city: {
             name: 'Amsterdam',
             location: {
-                latitude: 50.846557,
+                latitude: 52.370216,
                 longitude: 4.895168,
                 zoom: 13
             }
@@ -39,11 +39,11 @@ const offers: FullOffer[] = [
         description: 'Просторный дом с видом на реку. Подходит для семей и деловых путешественников. До центра 15 минут пешком.',
         type: 'house',
         price: 180,
-        images: ['apartment3_1.jpg', 'apartment3_2.jpg', 'apartment3_3.jpg', 'apartment3_4.jpg', 'apartment3_5.jpg', 'apartment3_6.jpg'],
+        images: ['img/apartment3_1.jpg', 'img/apartment3_2.jpg', 'img/apartment3_3.jpg', 'img/apartment3_4.jpg', 'img/apartment3_5.jpg', 'img/apartment3_6.jpg'],
         city: {
             name: 'Amsterdam',
             location: {
-                latitude: 50.846557,
+                latitude: 52.370216,
                 longitude: 4.895168,
                 zoom: 13
             }
@@ -71,11 +71,11 @@ const offers: FullOffer[] = [
         description: 'Уникальная квартира с аутентичным интерьером. Высокие потолки, паркет, камин. В шаге — Гран-Плас и шоколадные бутики.',
         type: 'apartment',
         price: 145,
-        images: ['apartment6_1.jpg', 'apartment6_2.jpg', 'apartment6_3.jpg', 'apartment6_4.jpg', 'apartment6_5.jpg', 'apartment6_6.jpg'],
+        images: ['img/apartment6_1.jpg', 'img/apartment6_2.jpg', 'img/apartment6_3.jpg', 'img/apartment6_4.jpg', 'img/apartment6_5.jpg', 'img/apartment6_6.jpg'],
         city: {
             name: 'Amsterdam',
             location: {
-                latitude: 50.846557,
+                latitude: 52.370216,
                 longitude: 4.895168,
                 zoom: 13
             }
@@ -103,11 +103,11 @@ const offers: FullOffer[] = [
         description: 'Трёхкомнатный дом в спокойном районе недалеко от музеев. В доме есть охраняемая парковка. Идеально для семьи с детьми.',
         type: 'house',
         price: 320,
-        images: ['apartment8_1.jpg', 'apartment8_2.jpg', 'apartment8_3.jpg', 'apartment8_4.jpg', 'apartment8_5.jpg', 'apartment8_6.jpg',],
+        images: ['img/apartment8_1.jpg', 'img/apartment8_2.jpg', 'img/apartment8_3.jpg', 'img/apartment8_4.jpg', 'img/apartment8_5.jpg', 'img/apartment8_6.jpg',],
         city: {
             name: 'Amsterdam',
             location: {
-                latitude: 50.846557,
+                latitude: 52.370216,
                 longitude: 4.895168,
                 zoom: 13
             }
