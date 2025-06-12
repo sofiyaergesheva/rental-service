@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { CitiesCardList } from "../../components/cities-card-list/CitiesCardList";
 import { OffersList } from "../../types/offer";
+import Map from "../../components/map/map";
+import React, { useState } from 'react';
 
 type MainPageProps = {
     rentalOffersCount: number;
@@ -8,6 +10,11 @@ type MainPageProps = {
 }
 
 function MainPage({ rentalOffersCount, offersList }: MainPageProps) {
+    const [selectedOffer, setSelectedOffer] = useState<OffersList | null>(null);
+    const handleOfferHover = (id: string) => {
+        const offer = offersList.find((o) => o.id === id) || null;
+        setSelectedOffer(offer);
+    };
     return (
         <div className="page page--gray page--main">
             <header className="header">
@@ -102,7 +109,12 @@ function MainPage({ rentalOffersCount, offersList }: MainPageProps) {
                             </div>
                         </section>
                         <div className="cities__right-section">
-                            <section className="cities__map map"></section>
+                            <Map
+                                city={offersList[0].city}
+                                offers={offersList}
+                                selectedOffer={selectedOffer}
+                                onMarkerClick={handleOfferHover}
+                            />
                         </div>
                     </div>
                 </div>

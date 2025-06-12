@@ -10,13 +10,13 @@ export const offersList: OffersList[] = [
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 50.846557,
+                'latitude': 52.370216,
                 'longitude': 4.895168,
-                'zoom': 13
+                'zoom': 12
             }
         },
         'location': {
-            'latitude': 52.3909553943508, 
+            'latitude': 52.3909553943508,
             'longitude': 4.85309666406198,
             'zoom': 16
         },
@@ -33,13 +33,13 @@ export const offersList: OffersList[] = [
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 50.846557,
+                'latitude': 52.370216,
                 'longitude': 4.895168,
-                'zoom': 13
+                'zoom': 10
             }
         },
         'location': {
-            'latitude': 52.3609553943508, 
+            'latitude': 52.3609553943508,
             'longitude': 4.85309666406198,
             'zoom': 16
         },
@@ -56,13 +56,13 @@ export const offersList: OffersList[] = [
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 50.846557,
+                'latitude': 52.370216,
                 'longitude': 4.895168,
-                'zoom': 13
+                'zoom': 10
             }
         },
         'location': {
-            'latitude': 52.3909553943508, 
+            'latitude': 52.3909553943508,
             'longitude': 4.929309666406198,
             'zoom': 16
         },
@@ -81,11 +81,11 @@ export const offersList: OffersList[] = [
             'location': {
                 'latitude': 52.370216,
                 'longitude': 4.895168,
-                'zoom': 13
+                'zoom': 10
             }
         },
         'location': {
-            'latitude': 52.3809553943508, 
+            'latitude': 52.3809553943508,
             'longitude': 4.939309666406198,
             'zoom': 16
         },
