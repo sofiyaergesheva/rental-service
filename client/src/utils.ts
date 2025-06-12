@@ -19,4 +19,11 @@ function sortOffersByType(offers: OffersList[], type: SortOffer): OffersList[] {
   }
 }
 
-export { sortOffersByType };
+function getOffersByCity(cityName: string | undefined, offers: OffersList[]): OffersList[] {
+  if (!cityName) {
+    return [];
+  }
+  return offers.filter((offer) => offer.city.name === cityName);
+}
+
+export { sortOffersByType, getOffersByCity };

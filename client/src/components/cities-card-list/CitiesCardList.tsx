@@ -20,7 +20,7 @@ function CitiesCardList({ offersList, block, onListItemHover }: CitiesCardListPr
                     previewImage={item.previewImage}
                     isPremium={item.isPremium}
                     rating={item.rating}
-                    onHover={onListItemHover} // вот здесь передаем
+                    onHover={onListItemHover}
                 />
             ))}
         </div>

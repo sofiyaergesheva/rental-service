@@ -6,12 +6,12 @@ export const offersList: OffersList[] = [
         'title': 'Уютная квартира в центре Парижа',
         'type': 'apartment',
         'price': 200,
-        'previewImage': 'img/apartment1_1.jpg',
+        'previewImage': '/img/apartment1_1.jpg',
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 52.370216,
-                'longitude': 4.895168,
+                'latitude': 52.36922706697589,
+                'longitude': 4.906007720330443,
                 'zoom': 12
             }
         },
@@ -29,12 +29,12 @@ export const offersList: OffersList[] = [
         'title': 'Современный дом рядом с Рейном',
         'type': 'house',
         'price': 180,
-        'previewImage': 'img/apartment3_1.jpg',
+        'previewImage': '/img/apartment3_1.jpg',
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 52.370216,
-                'longitude': 4.895168,
+                'latitude': 52.36922706697589,
+                'longitude': 4.906007720330443,
                 'zoom': 10
             }
         },
@@ -52,12 +52,12 @@ export const offersList: OffersList[] = [
         'title': 'Квартира в историческом здании',
         'type': 'apartment',
         'price': 145,
-        'previewImage': 'img/apartment6_1.jpg',
+        'previewImage': '/img/apartment6_1.jpg',
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 52.370216,
-                'longitude': 4.895168,
+                'latitude': 52.36922706697589,
+                'longitude': 4.906007720330443,
                 'zoom': 10
             }
         },
@@ -75,12 +75,12 @@ export const offersList: OffersList[] = [
         'title': 'Семейный дом в Амстердаме',
         'type': 'house',
         'price': 320,
-        'previewImage': 'img/apartment8_1.jpg',
+        'previewImage': '/img/apartment8_1.jpg',
         'city': {
             'name': 'Amsterdam',
             'location': {
-                'latitude': 52.370216,
-                'longitude': 4.895168,
+                'latitude': 52.36922706697589,
+                'longitude': 4.906007720330443,
                 'zoom': 10
             }
         },
@@ -92,5 +92,28 @@ export const offersList: OffersList[] = [
         'isPremium': true,
         'isFavorite': true,
         'rating': 3.7
+    },
+    {
+        'id': '2',
+        'title': 'Студия у Монмартра',
+        'type': 'room',
+        'price': 120,
+        'previewImage': '/img/apartment2_1.jpg',
+        'city': {
+            'name': 'Paris',
+            'location': {
+                'latitude': 48.857961940958674,
+                'longitude': 2.3487029334470035,
+                'zoom': 11
+            }
+        },
+        'location': {
+            'latitude': 48.857,
+            'longitude': 2.348,
+            'zoom': 11
+        },
+        'isPremium': false,
+        'isFavorite': true,
+        'rating': 4.3
     }
 ]

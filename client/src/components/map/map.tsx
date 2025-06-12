@@ -4,9 +4,10 @@ import 'leaflet/dist/leaflet.css';
 import useMap from './useMap';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from './const';
 import { OffersList } from '../../types/offer';
+import { CityOffer } from '../../types/offer';
 
 type MapProps = {
-  city: OffersList['city'];
+  city: CityOffer;
   offers: OffersList[];
   selectedOffer: OffersList | null;
   onMarkerClick: (id: string) => void;
@@ -27,6 +28,15 @@ function Map({ city, offers, selectedOffer, onMarkerClick }: MapProps) {
     iconSize: [40, 40],
     iconAnchor: [20, 40],
   });
+
+  useEffect(() => {
+    if (map) {
+      map.setView(
+        [city.location.latitude, city.location.longitude],
+        city.location.zoom
+      );
+    }
+  }, [map, city]);
 
   useEffect(() => {
     if (!map) return;
@@ -58,7 +68,9 @@ function Map({ city, offers, selectedOffer, onMarkerClick }: MapProps) {
     });
   }, [map, offers, selectedOffer, onMarkerClick, currentCustomIcon, defaultCustomIcon]);
 
-  return <div style={{ height: '500px'}} ref={mapRef}></div>;
+
+
+  return <div style={{ height: '600px' }} ref={mapRef}></div>;
 }
 
 export default Map;

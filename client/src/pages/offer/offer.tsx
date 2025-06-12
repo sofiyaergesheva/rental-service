@@ -8,6 +8,8 @@ import { useState } from "react";
 import { OffersList } from "../../types/offer";
 import Map from "../../components/map/map";
 import { CitiesCardList } from "../../components/cities-card-list/CitiesCardList";
+import { BlockName } from "../../const";
+import { useAppSelector } from "../../hooks";
 
 type OfferProps = {
     offers: FullOffer[];
@@ -15,6 +17,7 @@ type OfferProps = {
 };
 
 function Offer({ offers, offersList }: OfferProps) {
+    const selectedCity = useAppSelector((state) => state.city);
     const params = useParams();
     const [selectedOffer, setSelectedOffer] = useState<OffersList | null>(null);
     const handleOfferHover = (id: string) => {
@@ -37,8 +40,8 @@ function Offer({ offers, offersList }: OfferProps) {
                 <div className="container">
                     <div className="header__wrapper">
                         <div className="header__left">
-                            <Link className="header__logo-link" to="/offer/:id">
-                                <img className="header__logo" src="img/logo.svg" alt="Rent service logo" width="81" height="41" />
+                            <Link className="header__logo-link" to="/">
+                                <img className="header__logo" src="/img/logo.svg" alt="Rent service logo" width="81" height="41" />
                             </Link>
                         </div>
                         <nav className="header__nav">
@@ -126,24 +129,19 @@ function Offer({ offers, offersList }: OfferProps) {
                                 <h2 className="offer__host-title">Meet the host</h2>
                                 <div className="offer__host-user user">
                                     <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                                        <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74"
+                                        <img className="offer__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74"
                                             alt="Host avatar" />
                                     </div>
                                     <span className="offer__user-name">
-                                        Angelina
+                                        {offer.host.name}
                                     </span>
                                     <span className="offer__user-status">
-                                        Pro
+                                        {offer.host.isPro ? 'Pro' : ''}
                                     </span>
                                 </div>
                                 <div className="offer__description">
                                     <p className="offer__text">
-                                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The
-                                        building is green and from 18th century.
-                                    </p>
-                                    <p className="offer__text">
-                                        An independent House, strategically located between Rembrand Square and National Opera, but where the
-                                        bustle of the city comes to rest in this alley flowery and colorful.
+                                        {offer.description}
                                     </p>
                                 </div>
                             </div>
@@ -154,19 +152,25 @@ function Offer({ offers, offersList }: OfferProps) {
                         </div>
                     </div>
                     <section className="offer__map map">
-                        <Map
-                            city={offersList[0].city}
-                            offers={offersListNearby}
-                            selectedOffer={selectedOffer}
-                            onMarkerClick={handleOfferHover}
-                        />
+                        {selectedCity && (
+                            <Map
+                                city={selectedCity}
+                                offers={offersList}
+                                selectedOffer={selectedOffer}
+                                onMarkerClick={handleOfferHover}
+                            />
+                        )}
                     </section>
                 </section>
                 <div className="container">
                     <section className="near-places places">
                         <h2 className="near-places__title">Other places in the neighbourhood</h2>
                         <div className="near-places__list places__list">
-                            <CitiesCardList offersList={offersListNearby} />
+                            <CitiesCardList
+                                offersList={offersListNearby}
+                                block={BlockName.NearOfferList}
+                                onListItemHover={handleOfferHover}
+                            />
                         </div>
                     </section>
                 </div>

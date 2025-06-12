@@ -4,25 +4,19 @@ import { OffersList } from "../../types/offer";
 import Map from "../../components/map/map";
 import React, { useState } from 'react';
 import { useAppSelector } from "../../hooks";
-import { useState } from "react";
-import { CitiesList } from "../../components/cities-list/citiesList";
 import { SortOffer } from "../../types/sort";
 import { SortOptions } from "../../components/sort-options/sort-options";
 import { sortOffersByType } from "../../utils";
 import { BlockName } from "../../const";
-
-// TODO ошибки 
+import { CitiesList } from "../../components/cities-list/CitiesList";
+import { getOffersByCity } from "../../utils";
 
 function MainPage() {
     const selectedCity = useAppSelector((state) => state.city);
     const offersList = useAppSelector((state) => state.offers);
     const selectedCityOffers = getOffersByCity(selectedCity?.name, offersList);
     const rentalOffersCount = selectedCityOffers.length;
-    const [selectedOffer, setSelectedOffer] = useState<OffersList | undefined>(undefined);
-    const handleListItemHover = (offerId: string) => {
-        const currentOffer = offersList.find((offer) => offer.id === offerId);
-        setSelectedOffer(currentOffer);
-    };
+
     const [activeSort, setActiveSort] = useState<SortOffer>('Popular');
 
     const [selectedOffer, setSelectedOffer] = useState<OffersList | null>(null);
@@ -75,16 +69,18 @@ function MainPage() {
                             <b className="places__found">{rentalOffersCount} places to stay in {selectedCity?.name}</b>
                             <SortOptions activeSorting={activeSort} onChange={(newSorting) => setActiveSort(newSorting)} />
                             <CitiesCardList block={BlockName.AllPages} offersList={sortOffersByType(selectedCityOffers, activeSort)}
-                                onListItemHover={handleListItemHover} />
+                                onListItemHover={handleOfferHover} />
                         </section>
                         <div className="cities__right-section">
                             <section className="cities__map map">
-                                <Map
-                                    city={offersList[0].city}
-                                    offers={offersList}
-                                    selectedOffer={selectedOffer}
-                                    onMarkerClick={handleOfferHover}
-                                />
+                                {selectedCity && (
+                                    <Map
+                                        city={selectedCity}
+                                        offers={offersList}
+                                        selectedOffer={selectedOffer}
+                                        onMarkerClick={handleOfferHover}
+                                    />
+                                )}
                             </section>
                         </div>
                     </div>

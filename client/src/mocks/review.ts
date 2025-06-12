@@ -7,8 +7,8 @@ const reviews: Review[] = [
         'date': '2023-06-29T21:00:00.456Z',
         'rating': 4,
         'user': {
-            'name': 'Alice',
-            'avatarUrl': 'img/avatar-angelina.jpg',
+            'name': 'Angelina',
+            'avatarUrl': '/img/avatar-angelina.jpg',
             'isPro': true
         }
     }
