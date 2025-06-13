@@ -7,7 +7,6 @@ import { useAppSelector } from "../../hooks";
 import { SortOffer } from "../../types/sort";
 import { SortOptions } from "../../components/sort-options/sort-options";
 import { sortOffersByType } from "../../utils";
-import { BlockName } from "../../const";
 import { CitiesList } from "../../components/cities-list/CitiesList";
 import { getOffersByCity } from "../../utils";
 
@@ -18,12 +17,15 @@ function MainPage() {
     const rentalOffersCount = selectedCityOffers.length;
 
     const [activeSort, setActiveSort] = useState<SortOffer>('Popular');
-
     const [selectedOffer, setSelectedOffer] = useState<OffersList | null>(null);
+
     const handleOfferHover = (id: string) => {
         const offer = offersList.find((o) => o.id === id) || null;
         setSelectedOffer(offer);
     };
+
+    const isEmpty = rentalOffersCount === 0;
+
     return (
         <div className="page page--gray page--main">
             <header className="header">
@@ -38,8 +40,7 @@ function MainPage() {
                             <ul className="header__nav-list">
                                 <li className="header__nav-item user">
                                     <a className="header__nav-link header__nav-link--profile" href="#">
-                                        <div className="header__avatar-wrapper user__avatar-wrapper">
-                                        </div>
+                                        <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                                         <span className="header__user-name user__name">Myemail@gmail.com</span>
                                         <span className="header__favorite-count">3</span>
                                     </a>
@@ -55,39 +56,59 @@ function MainPage() {
                 </div>
             </header>
 
-            <main className="page__main page__main--index">
+            <main className={`page__main page__main--index ${isEmpty ? 'page__main--index-empty' : ''}`}>
                 <h1 className="visually-hidden">Cities</h1>
                 <div className="tabs">
                     <section className="locations container">
                         <CitiesList selectedCity={selectedCity} />
                     </section>
                 </div>
+
                 <div className="cities">
-                    <div className="cities__places-container container">
-                        <section className="cities__places places">
-                            <h2 className="visually-hidden">Places</h2>
-                            <b className="places__found">{rentalOffersCount} places to stay in {selectedCity?.name}</b>
-                            <SortOptions activeSorting={activeSort} onChange={(newSorting) => setActiveSort(newSorting)} />
-                            <CitiesCardList block={BlockName.AllPages} offersList={sortOffersByType(selectedCityOffers, activeSort)}
-                                onListItemHover={handleOfferHover} />
-                        </section>
-                        <div className="cities__right-section">
-                            <section className="cities__map map">
-                                {selectedCity && (
-                                    <Map
-                                        city={selectedCity}
-                                        offers={offersList}
-                                        selectedOffer={selectedOffer}
-                                        onMarkerClick={handleOfferHover}
-                                    />
-                                )}
+                    {isEmpty ? (
+                        <div className="cities__places-container cities__places-container--empty container">
+                            <section className="cities__no-places">
+                                <div className="cities__status-wrapper tabs__content">
+                                    <b className="cities__status">No places to stay available</b>
+                                    <p className="cities__status-description">
+                                        We could not find any property available at the moment in {selectedCity?.name}
+                                    </p>
+                                </div>
                             </section>
+                            <div className="cities__right-section"></div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="cities__places-container container">
+                            <section className="cities__places places">
+                                <h2 className="visually-hidden">Places</h2>
+                                <b className="places__found">{rentalOffersCount} places to stay in {selectedCity?.name}</b>
+                                <SortOptions activeSorting={activeSort} onChange={setActiveSort} />
+                                <div className="cities__places-list places__list tabs__content">
+                                    <CitiesCardList
+                                        offersList={sortOffersByType(selectedCityOffers, activeSort)}
+                                        onListItemHover={handleOfferHover}
+                                    />
+                                </div>
+                            </section>
+                            <div className="cities__right-section">
+                                <section className="cities__map map">
+                                    {selectedCity && (
+                                        <Map
+                                            city={selectedCity}
+                                            offers={selectedCityOffers}
+                                            selectedOffer={selectedOffer}
+                                            onMarkerClick={handleOfferHover}
+                                        />
+                                    )}
+                                </section>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </main>
         </div>
     );
 }
+
 
 export { MainPage };
